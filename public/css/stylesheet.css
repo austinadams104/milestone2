@@ -1,3 +1,7 @@
+html, body {
+    min-height: 100%;
+}
+
 body {
   background-image: url("http://wallpapercave.com/wp/WKWW6sh.jpg");
   background-repeat:no-repeat;
