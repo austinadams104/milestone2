@@ -8,7 +8,7 @@ var entries = [
 
 /* READ all: GET entries listing. */
 router.get('/', function(req, res, next) {
-  res.render('til/index', { title: 'Blog', entries: entries });
+  res.render('til/index', { title: 'Today I Learned..', entries: entries });
 });
 
 /* CREATE entry form: GET /entries/new */
@@ -19,7 +19,7 @@ router.get('/new', function(req, res, next) {
 /*CREATE entry: POST /entries/ */
 router.post('/', function(req, res, next) {
   entries.push(req.body);
-  res.render('til/index', { title: 'Blog', entries: entries });
+  res.render('til/index', { title: 'Today I Learned..', entries: entries });
 });
 
 /* UPDATE entry form: GET /entries/1/edit */
@@ -46,7 +46,7 @@ router.post('/:id', function(req, res, next) {
 router.get('/:id/delete', function(req, res, next) {
   var id = req.params.id
   entries = entries.slice(0,id).concat(entries.slice(id+1, entries.length));
-  res.render('til/index', { title: 'Blog', entries: entries });
+  res.render('til/index', { title: 'Today I Learned..', entries: entries });
 });
 
 /* THIS NEEDS TO BE LAST or /new goes here rather than where it should */
