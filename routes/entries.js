@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 var entries = [
-  {slug:"February 8th, 2016", body: "I learned patience.", created_at: "some date"},
+  {slug:"February 8th, 2016", body: "I learned patience by not throwing my computer against a wall!", created_at: "some date"},
   {slug:"CLICK HERE", body: "Wow...you are pretty easily persuaded!", created_at: "some date"}
 ];
 
