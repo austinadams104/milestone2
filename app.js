@@ -22,15 +22,16 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+/*
 var orm = require('orm');
-var localstring = "postgres://cs2610:Austin@localhost/entries";
+var localstring = "postgres://postgres:llabtoof45!@localhost/entries";
 var dbstring = process.env.DATABASE_URL || localstring;
 app.use(orm.express(dbstring, {
   define: function (db, models, next) {
     next();
- }
+  }
 }));
-
+*/
 app.use('/', routes);
 app.use('/entries', entries);
 
