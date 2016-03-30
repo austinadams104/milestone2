@@ -22,7 +22,20 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-var orm = require('orm');
+var pg = require('pg');
+
+pg.defaults.ssl = true;
+pg.connect(process.env.DATABASE_URL, function(err, client) {
+  if (err) throw err;
+  console.log('Connected to postgres! Getting schemas...');
+
+  client
+    .query('SELECT table_schema,table_name FROM information_schema.tables;')
+    .on('row', function(row) {
+      console.log(JSON.stringify(row));
+    });
+});
+/*var orm = require('orm');
 
 var dbstring = "ec2-107-21-101-67.compute-1.amazonaws.com";
 var string = process.env.DATABASE_URL || dbstring;
@@ -31,7 +44,7 @@ app.use(orm.express(string, {
     next();
   }
 }));
-
+*/
 app.use('/', routes);
 app.use('/entries', entries);
 
