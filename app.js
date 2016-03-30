@@ -24,7 +24,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 var orm = require('orm');
 
-var dbstring = "postgres://cs2610:asdfasdf@localhost/entres";
+var dbstring = "ec2-107-21-101-67.compute-1.amazonaws.com";
 var string = process.env.DATABASE_URL || dbstring;
 app.use(orm.express(string, {
   define: function (dv, models, next){
