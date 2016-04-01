@@ -24,7 +24,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 var orm = require('orm');
-var localstring = "postgres://postgres:llabtoof45!@localhost/entries";
+var localstring = "postgres://postgres:postgres@localhost/entries";
 var dbstring = process.env.DATABASE_URL || localstring;
 app.use(orm.express(dbstring, {
   define: function (db, models, next) {
