@@ -53,14 +53,7 @@ router.get('/:id/edit', function(req, res, next) {
       }
       res.render('entries/update', {title: 'Update an entry', entry: data[0]});
     }
-  );
-
-  // res.render('entries/update',
-//  {
-//    title: 'Update an entry',
-//    id: req.params.id,
-  //  entry: entries[req.params.id]
-//  });
+);
 });
 
 /* UPDATE entry: POST /entries/1 */

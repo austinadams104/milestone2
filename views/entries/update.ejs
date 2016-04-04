@@ -1,5 +1,5 @@
 <% include ../head %>
-<form style = "text-align:center;" action="/entries/<%= id %>" method='POST'>
+<form style = "text-align:center;" action="/entries/<%= entry.id %>" method='POST'>
 <label name="title">Title</label>
 <input type="text" name="title" value="<%= entry.title %>">
 <br />
