@@ -1,10 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-var entries = [
-  {slug:"February 8th, 2016", body: "I learned patience by not throwing my computer against a wall!", created_at: "some date"},
-  {slug:"CLICK HERE", body: "Wow...you are pretty easily persuaded!", created_at: "some date"}
-];
+var entries = [];
 
 /* READ all: GET entries listing. */
 router.get('/', function(req, res, next) {
@@ -30,8 +27,8 @@ router.get('/new', function(req, res, next) {
 /*CREATE entry: POST /entries/ */
 router.post('/', function(req, res, next) {
   req.db.driver.execQuery(
-    "INSERT INTO entries (slug, body) VALUES (?,?);",
-    [req.body.slug, req,body.body],
+    "INSERT INTO entries (title, body) VALUES (?,?);",
+    [req.body.title, req,body.body],
     function(err, data){
       if(err);
       {
@@ -71,8 +68,8 @@ router.post('/:id', function(req, res, next) {
   var id = parseInt(req.params.id);
 
   req.db.driver.execQuery(
-    "UPDATE entries SET slug = ? ,body = ? WHERE id = ?;",
-    [req.body.slug, req.body.body, parseInt(req.params.id)],
+    "UPDATE entries SET title = ? ,body = ? WHERE id = ?;",
+    [req.body.title, req.body.body, parseInt(req.params.id)],
     function(err,data){
       if(err)
       {
