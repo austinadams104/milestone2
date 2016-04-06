@@ -112,7 +112,7 @@ router.get('/:id', function(req, res, next) {
         console.log(err);
       }
 
-      res.render('entries/entry', {title: "a entry", entry: data[0]});
+      res.render('til/entry', {title: "a entry", entry: data[0]});
     }
   );
 
