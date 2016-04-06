@@ -1,7 +1,10 @@
 var express = require('express');
 var router = express.Router();
 
-var entries = [];
+var entries = [
+  {slug:"February 8th, 2016", body: "I learned patience by not throwing my computer against a wall!", created_at: "some date"},
+  {slug:"CLICK HERE", body: "Wow...you are pretty easily persuaded!", created_at: "some date"}
+];
 
 /* READ all: GET entries listing. */
 router.get('/', function(req, res, next) {
@@ -14,20 +17,20 @@ router.get('/', function(req, res, next) {
       {
         console.log(err);
       }
-      res.render('entries/index', {title: 'Today I learned', entries: data, name:name});
+      res.render('til/index', {title: 'Today I learned', entries: data, name:name});
     }
   );
 });
 
 /* CREATE entry form: GET /entries/new */
 router.get('/new', function(req, res, next) {
-  res.render('entries/new', {title: "Create new entry"});
+  res.render('til/new', {title: "Create new entry"});
 });
 
 /*CREATE entry: POST /entries/ */
 router.post('/', function(req, res, next) {
   req.db.driver.execQuery(
-    "INSERT INTO entries (title, body) VALUES (?,?);",
+    "INSERT INTO entries (slug, body) VALUES (?,?);",
     [req.body.title, req,body.body],
     function(err, data){
       if(err);
@@ -51,7 +54,7 @@ router.get('/:id/edit', function(req, res, next) {
       {
         console.log(err);
       }
-      res.render('entries/update', {title: 'Update an entry', entry: data[0]});
+      res.render('til/update', {title: 'Update an entry', entry: data[0]});
     }
 );
 });
@@ -61,7 +64,7 @@ router.post('/:id', function(req, res, next) {
   var id = parseInt(req.params.id);
 
   req.db.driver.execQuery(
-    "UPDATE entries SET title = ? ,body = ? WHERE id = ?;",
+    "UPDATE entries SET slug = ? ,body = ? WHERE id = ?;",
     [req.body.title, req.body.body, parseInt(req.params.id)],
     function(err,data){
       if(err)
@@ -110,7 +113,7 @@ router.get('/:id', function(req, res, next) {
       {
         console.log(err);
       }
-      res.render('entries/entry', {titles: "a entry", entry: data[0]});
+      res.render('til/entry', {titles: "a entry", entry: data[0]});
     }
   );
 });
