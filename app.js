@@ -7,7 +7,7 @@ var bodyParser = require('body-parser');
 
 
 var routes = require('./routes/index');
-var entries = require('./routes/entries');
+var til = require('./routes/til');
 
 var app = express();
 
@@ -26,7 +26,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 var orm = require('orm');
 
-var dbstring = "postgres://postgres:postgres@localhost/entries";
+var dbstring = "postgres://postgres:postgres@localhost/til";
 var string = process.env.DATABASE_URL || dbstring;
 app.use(orm.express(string, {
     define: function (db, models, next) {
@@ -35,7 +35,7 @@ app.use(orm.express(string, {
 }));
 
 app.use('/', routes);
-app.use('/entries', entries);
+app.use('/til', til);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
