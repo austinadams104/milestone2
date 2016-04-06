@@ -1,9 +1,9 @@
 <% include ../head %>
-<form style = "text-align:center;" action="/entries/<%= id %>" method='POST'>
-<label name="slug">Title</label>
+<form style = "text-align:center;"action="/entries/<%= entry.id %>" method='POST'>
+<label name="slug">Slug</label>
 <input type="text" name="slug" value="<%= entry.slug %>">
 <br />
-<label name="body">Entry</label>
+<label name="body">Body</label>
 <input type="text" name="body" value="<%= entry.body %>">
 <br />
 <input type="submit">

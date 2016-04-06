@@ -1,13 +1,13 @@
 <% include ../head %>
 
-<h3> Welcome Back <%= name %> </h3>
+<h1 style = "text-align:center;">Welcome Back <%= name %></h1>
 
 <ul>
 <% for(var i=0; i<entries.length; i++) { %>
  <li>
-   <a href='/entries/<%= i %>' ><%= entries[i].slug %></a>
-   <a href='/entries/<%= i %>/edit'>Edit</a>
-   <a href='/entries/<%= i %>/delete'>Delete</a>
+   <a href='/entries/<%= entries[i].id %>' ><%= entries[i].slug %></a>
+   <a href='/entries/<%= entries[i].id %>/edit'>Edit</a>
+   <a href='/entries/<%= entries[i].id %>/delete'>Delete</a>
  </li>
 <% } %>
 </ul>
